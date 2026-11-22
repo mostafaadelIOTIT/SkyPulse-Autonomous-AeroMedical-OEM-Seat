@@ -1,9 +1,8 @@
 #include <Arduino.h>
 #include "mbedtls/md.h" // Hardware SHA-256 Cryptography for Air-Gapped Cabin SCADA
 
-// Pin Definitions for SkyPulse OEM Smart Seat
 const int SEAT_MAT_PIN = 27;      // Piezoelectric Seat Occupancy Switch
-const int HR_SPO2_PIN = 34;       // Simulates rPPG + Silicone Strap Biometrics
+const int HR_SPO2_PIN = 34;       // Simulates rPPG + SCG Vibro-Acoustic Biometrics
 const int EMG_STASIS_PIN = 35;    // Simulates Lower-Limb Venous Stasis (DVT Risk %)
 const int CREW_ALERT_PIN = 2;     // Red LED: Explainable AI (XAI) Cabin Crew Alert
 const int DVT_PAD_PIN = 4;        // Blue LED: Cushion Neuromuscular Micro-Stimulation
@@ -11,7 +10,6 @@ const int NEURO_VR_PIN = 15;      // Green LED: Generative HRV Bio-Feedback Paci
 
 bool memoryWiped = false;
 
-// Generate SHA-256 Cryptographic Signature for Zero-Trust Cabin Bus
 String signSkyPulseSHA256(String payload) {
   byte shaResult[32];
   mbedtls_md_context_t ctx;
@@ -39,7 +37,7 @@ void setup() {
   pinMode(NEURO_VR_PIN, OUTPUT);
 
   Serial.println("================================================================");
-  Serial.println("[SKYPULSE-OEM] Autonomous Aero-Medical Seat Node: ONLINE");
+  Serial.println("[SKYPULSE + THORAX-NEXUS] Aero-Medical & Vibro-Acoustic Node: ONLINE");
   Serial.println("[AIR-GAP SEC] Physical Isolation & SHA-256 Guardrails: ACTIVE");
   Serial.println("================================================================");
 }
@@ -62,7 +60,7 @@ void loop() {
   }
   memoryWiped = false;
 
-  // 2. Read Dual-Verification Biometrics (Optical rPPG + Silicone Bio-Harness)
+  // 2. Read Dual-Verification Biometrics
   int heartRateBPM = map(analogRead(HR_SPO2_PIN), 0, 4095, 55, 165);
   int spo2Pct = (heartRateBPM > 125) ? 88 : 98;
   int dvtStasisIndex = map(analogRead(EMG_STASIS_PIN), 0, 4095, 0, 100);
@@ -70,7 +68,7 @@ void loop() {
   String xaiDiagnosis = "NORMAL_CABIN_VITALS";
   String actuatorState = "PASSIVE_MONITORING";
 
-  // 3. Anti-DVT Cushion Micro-Stimulation Logic (Hardware Current-Limited)
+  // 3. Anti-DVT Cushion Micro-Stimulation Logic
   if (dvtStasisIndex > 65) {
     digitalWrite(DVT_PAD_PIN, HIGH);
     actuatorState = "DVT_MICRO_STIM_ACTIVE";
