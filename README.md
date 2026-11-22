@@ -9,7 +9,7 @@
 Engineered for seamless integration into robotic tube-bending and high-density polyurethane foam molding production lines, the architecture combines **Dual-Verification Sensing (40s contactless rPPG + medical-grade silicone bio-harness)** with **Deterministic Edge AI (ESP32/FreeRTOS)**, **Explainable AI (XAI) crew guidance**, and **Air-Gapped Zero-Trust Cybersecurity**.
 
 ## 🚀 Live Interactive Simulations (Click Below to Test in Browser)
-* 🔗 **[Launch SkyPulse Cabin SCADA & XAI Triage Console (Streamlit Cloud)](https://skypulse-autonomous-aeromedical-oem-seat-nxp8zrtxroyttcdvg9phq.streamlit.app/)**
+* 🔗 **[Launch SkyPulse Cabin SCADA & XAI Triage Console (Streamlit Cloud)](https://skypulse-autonomous-aeromedical-oem-seat-mywkoypefhfjwnzrhgivf.streamlit.app/)**
 * 🔗 **[Run Real-Time ESP32 Seat Occupancy, DVT & RAM-Wipe Simulation (Wokwi)](https://wokwi.com/projects/480786815591452673)**
 
 ## 🏗️ Core Engineering Modules
